@@ -11,7 +11,7 @@ import socket
 from struct import pack, unpack
 
 import hmac
-from hashlib import md5, sha1
+from hashlib import md5, sha256
 
 import logging
 from urllib.parse import urlparse
@@ -238,7 +238,7 @@ class TurnMessage:
 
 
     def _hmac(self, key: bytes, msg: bytes) -> bytes:
-        hashed = hmac.new(key, msg, sha1)
+        hashed = hmac.new(key, msg, sha256)
         return hashed.digest()
 
     
